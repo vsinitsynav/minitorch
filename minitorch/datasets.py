@@ -4,7 +4,8 @@ from dataclasses import dataclass
 from typing import List, Tuple
 
 
-def make_pts(N: int) -> List[Tuple[float, float]]:
+def make_pts(N: int) -> list[Tuple[float, float]]:
+    """Make N random points in the unit square."""
     X = []
     for i in range(N):
         x_1 = random.random()
@@ -21,6 +22,7 @@ class Graph:
 
 
 def simple(N: int) -> Graph:
+    """A simple dataset where x_1 < 0.5 is class 1 else class 0."""
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -30,6 +32,7 @@ def simple(N: int) -> Graph:
 
 
 def diag(N: int) -> Graph:
+    """A simple dataset where x_1 + x_2 < 0.5 is class 1 else class 0."""
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -39,6 +42,7 @@ def diag(N: int) -> Graph:
 
 
 def split(N: int) -> Graph:
+    """A simple dataset where x_1 < 0.2 or x_1 > 0.8 is class 1 else class 0."""
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -48,25 +52,29 @@ def split(N: int) -> Graph:
 
 
 def xor(N: int) -> Graph:
+    """A simple dataset where x_1 < 0.5 and x_2 > 0.5 or x_1 > 0.5 and x_2 < 0.5 is class 1 else class 0."""
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
-        y1 = 1 if ((x_1 < 0.5 and x_2 > 0.5) or (x_1 > 0.5 and x_2 < 0.5)) else 0
+        y1 = 1 if x_1 < 0.5 and x_2 > 0.5 or x_1 > 0.5 and x_2 < 0.5 else 0
         y.append(y1)
     return Graph(N, X, y)
 
 
 def circle(N: int) -> Graph:
+    """A simple dataset where (x_1 - 0.5)^2 + (x_2 - 0.5)^2 > 0.1 is class 1 else class 0."""
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
-        x1, x2 = (x_1 - 0.5, x_2 - 0.5)
+        x1, x2 = x_1 - 0.5, x_2 - 0.5
         y1 = 1 if x1 * x1 + x2 * x2 > 0.1 else 0
         y.append(y1)
     return Graph(N, X, y)
 
 
 def spiral(N: int) -> Graph:
+    """A simple dataset where points in two interlocking spirals are class 0 and 1."""
+
     def x(t: float) -> float:
         return t * math.cos(t) / 20.0
 
