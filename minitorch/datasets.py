@@ -1,10 +1,10 @@
 import math
 import random
 from dataclasses import dataclass
-from typing import List, Tuple
+from typing import List, Tuple, Any
 
 
-def make_pts(N: int) -> list[Tuple[float, float]]:
+def make_pts(N: int) -> Any:
     """Make N random points in the unit square."""
     X = []
     for i in range(N):
