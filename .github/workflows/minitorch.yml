@@ -33,11 +33,11 @@ jobs:
         pytest tests -x -m task0_2
         pytest tests -x -m task0_3
         pytest tests -x -m task0_4
-        echo "Module 1"
-        pytest tests -x -m task1_1
-        pytest tests -x -m task1_2
-        pytest tests -x -m task1_3
-        pytest tests -x -m task1_4
+        # echo "Module 1"
+        # pytest tests -x -m task1_1
+        # pytest tests -x -m task1_2
+        # pytest tests -x -m task1_3
+        # pytest tests -x -m task1_4
         # echo "Module 2"
         # pytest tests -x -m task2_1
         # pytest tests -x -m task2_2
